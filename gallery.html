@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Gallery | DD Coder Dojo</title>
+    
+    <!-- SEO IMPROVEMENTS -->
+    <meta name="description" content="Explore amazing projects created by DD Coder Dojo students. See games, websites, apps, and more built by young coders aged 7-17.">
+    
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- MAIN STYLESHEET -->
+    <link rel="stylesheet" href="coderdojo-styles.css">
+    
+    <style>
+        /* ===== GALLERY PAGE SPECIFIC STYLES ===== */
+        .gallery-header {
+            padding: 8rem 5% 4rem;
+            background: linear-gradient(135deg, var(--dark-color) 0%, #1a0d2e 50%, #16213e 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .gallery-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(102, 0, 255, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(0, 217, 255, 0.15) 0%, transparent 30%);
+            z-index: 0;
+        }
+        
+        .gallery-header h1 {
+            font-family: var(--title-font);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .gallery-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+        
+        .gallery-section {
+            padding: 6rem 5%;
+            background: var(--dark-color);
+        }
+        
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--surface-color);
+            color: var(--text-color);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .project-card {
+            background: var(--surface-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .project-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(102, 0, 255, 0.8), rgba(0, 217, 255, 0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .view-project-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .view-project-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .project-info {
+            padding: 2rem;
+        }
+        
+        .student-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .student-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .student-details h4 {
+            color: var(--light-color);
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .student-details .age-program {
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+        }
+        
+        .project-info h3 {
+            font-family: var(--title-font);
+            color: var(--light-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .project-description {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .project-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-date {
+            color: var(--text-color);
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .project-likes {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+        
+        .load-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .load-more-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .load-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 0, 255, 0.4);
+        }
+        
+        .stats-section {
+            background: var(--surface-color);
+            padding: 4rem 0;
+            margin-top: 4rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-family: var(--title-font);
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-filters {
+                justify-content: center;
+            }
+            
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SKIP LINK FOR ACCESSIBILITY -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="logo">
+            <div class="logo-icon">
+                <div class="orbit" aria-hidden="true"></div>
+                <div class="core" aria-hidden="true"></div>
+            </div>
+            <span>CoderDojo</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle" 
+                aria-label="Toggle mobile menu" 
+                aria-expanded="false">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li class="active"><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark/light mode">
+        <svg viewBox="0 0 24 24" class="sun-icon">
+            <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" class="moon-icon" style="display: none;">
+            <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+        </svg>
+    </button>
+
+    <!-- Gallery Header -->
+    <section class="gallery-header">
+        <h1>Student Project Gallery</h1>
+        <p>Discover the amazing projects created by our young coders at DD Coder Dojo!</p>
+    </section>
+
+    <main id="main-content" tabindex="-1">
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <div class="gallery-container">
+                <!-- Filter Buttons -->
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="scratch">Scratch Games</button>
+                    <button class="filter-btn" data-filter="web">Websites</button>
+                    <button class="filter-btn" data-filter="python">Python Apps</button>
+                    <button class="filter-btn" data-filter="microbit">micro:bit</button>
+                    <button class="filter-btn" data-filter="team">Team Projects</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Scratch Game Project 1 -->
+                    <div class="project-card" data-category="scratch">
+                        <div class="project-image">
+                            <img src="/api/placeholder/400/250" alt="Space Adventure Game">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project-btn">
+                                    <i class="fas fa-play"></i> View Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="student-meta">
+                                <img src="/api/placeholder/40/40" alt="Thabo" class="student-avatar">
+                                <div class="student-details">
+                                    <h4>Thabo M.</h4>
+                                    <span class="age-program">Age 9 • Junior Ninja</span>
+                                </div>
+                            </div>
+                            <h3>Space Adventure Game</h3>
+                            <p class="project-description">An exciting space adventure where you pilot a rocket ship through asteroid fields, collect power-ups, and battle alien invaders!</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Scratch</span>
+                                <span class="tech-tag">Animation</span>
+                                <span class="tech-tag">Sound Effects</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="project-date">December 2024</span>
+                                <div class="project-likes">
+                                    <i class="fas fa-heart"></i>
+                                    <span>23</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Website Project -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="/api/placeholder/400/250" alt="School Website">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project-btn">
+                                    <i class="fas fa-external-link-alt"></i> View Website
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="student-meta">
+                                <img src="/api/placeholder/40/40" alt="Aisha" class="student-avatar">
+                                <div class="student-details">
+                                    <h4>Aisha K.</h4>
+                                    <span class="age-program">Age 13 • Code Explorer</span>
+                                </div>
+                            </div>
+                            <h3>My School Website</h3>
+                            <p class="project-description">A complete website about my school featuring photo galleries, teacher profiles, school news, and an interactive map of the campus.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="project-date">November 2024</span>
+                                <div class="project-likes">
+                                    <i class="fas fa-heart"></i>
+                                    <span>31</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- micro:bit Project -->
+                    <div class="project-card" data-category="microbit">
+                        <div class="project-image">
+                            <img src="/api/placeholder/400/250" alt="Smart Home Controller">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project-btn">
+                                    <i class="fas fa-microchip"></i> See Demo
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="student-meta">
+                                <img src="/api/placeholder/40/40" alt="Sipho" class="student-avatar">
+                                <div class="student-details">
+                                    <h4>Sipho N.</h4>
+                                    <span class="age-program">Age 15 • Tech Innovator</span>
+                                </div>
+                            </div>
+                            <h3>Smart Home Controller</h3>
+                            <p class="project-description">A micro:bit-based system that controls LED lights, monitors temperature, and sends alerts. Features remote control via radio signals.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">micro:bit</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">IoT</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="project-date">January 2025</span>
+                                <div class="project-likes">
+                                    <i class="fas fa-heart"></i>
+                                    <span>45</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Python App -->
+                    <div class="project-card" data-category="python">
+                        <div class="project-image">
+                            <img src="/api/placeholder/400/250" alt="Homework Tracker">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project-btn">
+                                    <i class="fab fa-python"></i> View Code
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="student-meta">
+                                <img src="/api/placeholder/40/40" alt="Lwazi" class="student-avatar">
+                                <div class="student-details">
+                                    <h4>Lwazi M.</h4>
+                                    <span class="age-program">Age 16 • Tech Innovator</span>
+                                </div>
+                            </div>
+                            <h3>Homework Tracker App</h3>
+                            <p class="project-description">A Python desktop application that helps students organize their homework, track deadlines, and view progress with a beautiful GUI interface.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Tkinter</span>
+                                <span class="tech-tag">SQLite</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="project-date">October 2024</span>
+                                <div class="project-likes">
+                                    <i class="fas fa-heart"></i>
+                                    <span>28</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Project -->
+                    <div class="project-card" data-category="team">
+                        <div class="project-image">
+                            <img src="/api/placeholder/400/250" alt="Community Help Platform">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project-btn">
+                                    <i class="fas fa-users"></i> View Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="student-meta">
+                                <img src="/api/placeholder/40/40" alt="Team" class="student-avatar">
+                                <div class="student-details">
+                                    <h4>Team Project</h4>
+                                    <span class="age-program">Mixed Ages • Collaboration</span>
+                                </div>
+                            </div>
+                            <h3>Community Help Platform</h3>
+                            <p class="project-description">A web platform where Wentworth residents can request help and offer services. Built collaboratively by students from all age groups.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML/CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Teamwork</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="project-date">September 2024</span>
+                                <div class="project-likes">
+                                    <i class="fas fa-heart"></i>
+                                    <span>52</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scratch Animation -->
+                    <div class="project-card" data-category="scratch">
+                        <div class="project-image">
+                            <img src="/api/placeholder/400/250" alt="Interactive Story">
+                            <div class="project-overlay">
+                                <a href="#" class="view-project-btn">
+                                    <i class="fas fa-play"></i> Watch Story
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="student-meta">
+                                <img src="/api/placeholder/40/40" alt="Nomsa" class="student-avatar">
+                                <div class="student-details">
+                                    <h4>Nomsa P.</h4>
+                                    <span class="age-program">Age 11 • Code Explorer</span>
+                                </div>
+                            </div>
+                            <h3>Interactive Adventure Story</h3>
+                            <p class="project-description">An interactive story where the viewer makes choices that change the plot. Features multiple endings and beautiful animations.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Scratch</span>
+                                <span class="tech-tag">Storytelling</span>
+                                <span class="tech-tag">Interactive</span>
+                            </div>
+                            <div class="project-stats">
+                                <span class="project-date">December 2024</span>
+                                <div class="project-likes">
+                                    <i class="fas fa-heart"></i>
+                                    <span>19</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more">
+                    <button class="load-more-btn" id="loadMoreBtn">
+                        <i class="fas fa-plus-circle"></i> Load More Projects
+                    </button>
+                </div>
+
+                <!-- Gallery Stats -->
+                <div class="stats-section">
+                    <h2 style="font-family: var(--title-font); color: var(--secondary-color); margin-bottom: 2rem;">Gallery Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">127</span>
+                            <span class="stat-label">Total Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">89</span>
+                            <span class="stat-label">Students Featured</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1,240</span>
+                            <span class="stat-label">Total Views</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">356</span>
+                            <span class="stat-label">Project Likes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DD (Digital Democracy) Coder Dojo</h3>
+                    <p>From blocks to big ideas — come code with us! Supported by KCA in partnership with Raspberry Pi Foundation.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="programs.html#junior">Junior Ninjas (7-10)</a></li>
+                        <li><a href="programs.html#intermediate">Code Explorers (11-13)</a></li>
+                        <li><a href="programs.html#senior">Tech Innovators (14-17)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> ashley@kcasa.org.za</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 178 Austerville Drive, Wentworth, Durban</p>
+                    <p><i class="fas fa-phone"></i> 031 461 3101</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DD (Digital Democracy) Coder Dojo. All rights reserved.</p>
+                <p>Supported by KCA (Keep A Child Alive) • In partnership with Raspberry Pi Foundation</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="coderdojo-script.js"></script>
+    <script>
+        // DARK MODE FUNCTIONALITY
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const isLightMode = document.body.classList.contains('light-mode');
+            
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            
+            if (isLightMode) {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+            
+            localStorage.setItem('lightMode', isLightMode);
+        }
+
+        // GALLERY FILTERING
+        function initializeGalleryFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+
+        // LOAD MORE FUNCTIONALITY
+        function initializeLoadMore() {
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const additionalProjects = [
+                {
+                    category: 'web',
+                    image: '/api/placeholder/400/250',
+                    title: 'Personal Portfolio',
+                    student: 'Zanele T.',
+                    age: 'Age 14 • Tech Innovator',
+                    description: 'A beautiful personal portfolio website showcasing my coding journey, projects, and achievements with smooth animations.',
+                    tech: ['HTML', 'CSS', 'JavaScript'],
+                    date: 'January 2025',
+                    likes: 18
+                },
+                {
+                    category: 'scratch',
+                    image: '/api/placeholder/400/250',
+                    title: 'Math Quiz Game',
+                    student: 'Mpho L.',
+                    age: 'Age 10 • Junior Ninja',
+                    description: 'An interactive math quiz game that helps younger students practice addition and subtraction in a fun way.',
+                    tech: ['Scratch', 'Education', 'Math'],
+                    date: 'December 2024',
+                    likes: 25
+                },
+                {
+                    category: 'python',
+                    image: '/api/placeholder/400/250',
+                    title: 'Weather App',
+                    student: 'Tshepo K.',
+                    age: 'Age 17 • Tech Innovator',
+                    description: 'A Python weather application that fetches real-time weather data and displays forecasts with a clean interface.',
+                    tech: ['Python', 'API', 'GUI'],
+                    date: 'November 2024',
+                    likes: 33
+                }
+            ];
+
+            loadMoreBtn.addEventListener('click', function() {
+                const galleryGrid = document.getElementById('galleryGrid');
+                
+                additionalProjects.forEach(project => {
+                    const projectCard = createProjectCard(project);
+                    galleryGrid.appendChild(projectCard);
+                    
+                    // Animate in
+                    setTimeout(() => {
+                        projectCard.style.opacity = '1';
+                        projectCard.style.transform = 'translateY(0)';
+                    }, 100);
+                });
+                
+                // Hide load more button after loading
+                this.style.display = 'none';
+            });
+        }
+
+        // CREATE PROJECT CARD
+        function createProjectCard(project) {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.setAttribute('data-category', project.category);
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.4s ease';
+            
+            card.innerHTML = `
+                <div class="project-image">
+                    <img src="${project.image}" alt="${project.title}">
+                    <div class="project-overlay">
+                        <a href="#" class="view-project-btn">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="student-meta">
+                        <img src="/api/placeholder/40/40" alt="${project.student}" class="student-avatar">
+                        <div class="student-details">
+                            <h4>${project.student}</h4>
+                            <span class="age-program">${project.age}</span>
+                        </div>
+                    </div>
+                    <h3>${project.title}</h3>
+                    <p class="project-description">${project.description}</p>
+                    <div class="project-tech">
+                        ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                    </div>
+                    <div class="project-stats">
+                        <span class="project-date">${project.date}</span>
+                        <div class="project-likes">
+                            <i class="fas fa-heart"></i>
+                            <span>${project.likes}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // SCROLL ANIMATIONS
+        function initializeScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        }
+
+        // INITIALIZE ON DOM LOAD
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme preference
+            const lightMode = localStorage.getItem('lightMode') === 'true';
+            if (lightMode) {
+                document.body.classList.add('light-mode');
+                if (document.querySelector('.sun-icon')) {
+                    document.querySelector('.sun-icon').style.display = 'none';
+                    document.querySelector('.moon-icon').style.display = 'block';
+                }
+            }
+
+            // Initialize gallery features
+            initializeGalleryFilters();
+            initializeLoadMore();
+            initializeScrollAnimations();
+        });
+    </script>
+</body>
+</html>

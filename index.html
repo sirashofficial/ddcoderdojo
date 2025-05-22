@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoderDojo Wentworth | Empowering Young Coders</title>
+    
+    <!-- SEO IMPROVEMENTS -->
+    <meta name="description" content="CoderDojo Wentworth: Free coding classes for kids aged 7-17. Learn programming, web development, and robotics in Austerville, South Africa.">
+    
+    <!-- PRELOAD CRITICAL RESOURCES -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- STRUCTURED DATA -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "CoderDojo Wentworth",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "178 Austerville Drive",
+            "addressLocality": "Wentworth, Durban"
+        },
+        "email": "ashley@kcasa.org.za",
+        "telephone": "031 461 3101"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="coderdojo-styles.css">
+</head>
+<body>
+    <!-- SKIP LINK FOR ACCESSIBILITY -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- IMPROVED NAVIGATION WITH ARIA LABELS -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="logo">
+            <div class="logo-icon">
+                <div class="orbit" aria-hidden="true"></div>
+                <div class="core" aria-hidden="true"></div>
+            </div>
+            <span>CoderDojo</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle" 
+                aria-label="Toggle mobile menu" 
+                aria-expanded="false">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+        <ul class="nav-links">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- DARK MODE TOGGLE BUTTON -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark/light mode">
+        <svg viewBox="0 0 24 24" class="sun-icon">
+            <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" class="moon-icon" style="display: none;">
+            <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+        </svg>
+    </button>
+
+    <main id="main-content" tabindex="-1">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <!-- Animated Background -->
+            <div class="hero-background">
+                <div class="matrix-rain"></div>
+                <div class="floating-particles"></div>
+            </div>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="typing-text" data-text="Code The Future">Code The Future</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="subtitle-line">Empowering young minds through</span>
+                    <span class="rotating-words">
+                        <span class="word active">coding education</span>
+                        <span class="word">creative thinking</span>
+                        <span class="word">problem solving</span>
+                        <span class="word">digital innovation</span>
+                    </span>
+                </p>
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn btn-primary pulse-btn">
+                        <span>Join Our Community</span>
+                        <div class="btn-particles"></div>
+                    </a>
+                    <a href="programs.html" class="btn btn-secondary glow-btn">
+                        <span>Explore Programs</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Hero Stats -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="150">0</span>
+                        <span class="stat-label">Students Enrolled</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="200">0</span>
+                        <span class="stat-label">Projects Created</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="3">0</span>
+                        <span class="stat-label">Age Groups</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <!-- Interactive Code Display -->
+                <div class="code-container">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="code-title">future_coder.js</span>
+                    </div>
+                    <pre class="code-content"><code>
+<span class="code-comment">// Welcome to CoderDojo Wentworth!</span>
+<span class="code-keyword">function</span> <span class="code-function">createYoungInnovator</span>() {
+  <span class="code-keyword">const</span> <span class="code-variable">student</span> = {
+    <span class="code-property">curiosity</span>: <span class="code-string">'unlimited'</span>,
+    <span class="code-property">creativity</span>: <span class="code-number">100</span>,
+    <span class="code-property">skills</span>: []
+  };
+  
+  <span class="code-keyword">while</span> (<span class="code-variable">student</span>.<span class="code-property">learning</span>) {
+    <span class="code-variable">student</span>.<span class="code-property">skills</span>.<span class="code-function">push</span>(
+      <span class="code-string">'problem_solving'</span>,
+      <span class="code-string">'logical_thinking'</span>,
+      <span class="code-string">'teamwork'</span>
+    );
+    <span class="code-function">buildTheFuture</span>();
+  }
+  
+  <span class="code-keyword">return</span> <span class="code-variable">student</span>;
+}
+
+<span class="code-comment">// Start your journey today! 🚀</span>
+<span class="code-function">createYoungInnovator</span>();
+                    </code></pre>
+                </div>
+                
+                <!-- Floating Programming Icons -->
+                <div class="floating-elements">
+                    <div class="float-item html-icon" style="--delay: 0s;">
+                        <div class="icon-glow"></div>
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <div class="float-item css-icon" style="--delay: 1s;">
+                        <div class="icon-glow"></div>
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <div class="float-item js-icon" style="--delay: 2s;">
+                        <div class="icon-glow"></div>
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <div class="float-item python-icon" style="--delay: 3s;">
+                        <div class="icon-glow"></div>
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="float-item react-icon" style="--delay: 4s;">
+                        <div class="icon-glow"></div>
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="float-item git-icon" style="--delay: 5s;">
+                        <div class="icon-glow"></div>
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROGRAMS SECTION -->
+        <section class="programs" id="programs">
+            <div class="container">
+                <h2>Our Programs</h2>
+                <p class="section-subtitle">From blocks to big ideas - discover the perfect coding path for every age!</p>
+                
+                <div class="programs-grid">
+                    <!-- Junior Program Card -->
+                    <div class="program-card" data-program="junior">
+                        <div class="program-card-inner">
+                            <!-- Front of Card -->
+                            <div class="program-card-front">
+                                <div class="program-icon">
+                                    <i class="fas fa-child"></i>
+                                </div>
+                                <h3>Junior Ninjas</h3>
+                                <p class="age-range">Ages 7-10</p>
+                                <p class="program-intro">Start your coding adventure with visual programming and creative games!</p>
+                                <div class="skill-preview">
+                                    <span class="skill-tag">Scratch</span>
+                                    <span class="skill-tag">Logic</span>
+                                    <span class="skill-tag">Creativity</span>
+                                </div>
+                                <div class="flip-indicator">
+                                    <i class="fas fa-hand-pointer"></i>
+                                    <span>Hover to explore</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Back of Card -->
+                            <div class="program-card-back">
+                                <div class="program-details">
+                                    <h4>What You'll Learn</h4>
+                                    <ul class="curriculum-list">
+                                        <li><i class="fas fa-check"></i> Block-based coding with Scratch</li>
+                                        <li><i class="fas fa-check"></i> Basic computer skills & typing</li>
+                                        <li><i class="fas fa-check"></i> Creative storytelling through games</li>
+                                        <li><i class="fas fa-check"></i> Problem-solving fundamentals</li>
+                                        <li><i class="fas fa-check"></i> Digital citizenship basics</li>
+                                    </ul>
+                                    
+                                    <div class="schedule-info">
+                                        <h5><i class="fas fa-calendar"></i> Schedule</h5>
+                                        <p>Thursday: 14:00-15:00<br>Friday: 13:00-15:00</p>
+                                    </div>
+                                    
+                                    <div class="progress-bar">
+                                        <span>Beginner Friendly</span>
+                                        <div class="progress">
+                                            <div class="progress-fill" style="width: 20%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="action-buttons">
+                                        <a href="https://scratch.mit.edu/" target="_blank" class="btn btn-try">Try Scratch</a>
+                                        <a href="contact.html" class="btn btn-join">Join Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Intermediate Program Card -->
+                    <div class="program-card" data-program="intermediate">
+                        <div class="program-card-inner">
+                            <!-- Front of Card -->
+                            <div class="program-card-front">
+                                <div class="program-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h3>Code Explorers</h3>
+                                <p class="age-range">Ages 11-13</p>
+                                <p class="program-intro">Bridge to real programming with web development and Python basics!</p>
+                                <div class="skill-preview">
+                                    <span class="skill-tag">HTML/CSS</span>
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Web Dev</span>
+                                </div>
+                                <div class="flip-indicator">
+                                    <i class="fas fa-hand-pointer"></i>
+                                    <span>Hover to explore</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Back of Card -->
+                            <div class="program-card-back">
+                                <div class="program-details">
+                                    <h4>What You'll Learn</h4>
+                                    <ul class="curriculum-list">
+                                        <li><i class="fas fa-check"></i> HTML & CSS foundations</li>
+                                        <li><i class="fas fa-check"></i> Python programming basics</li>
+                                        <li><i class="fas fa-check"></i> Building simple websites</li>
+                                        <li><i class="fas fa-check"></i> Introduction to databases</li>
+                                        <li><i class="fas fa-check"></i> Version control with Git</li>
+                                    </ul>
+                                    
+                                    <div class="schedule-info">
+                                        <h5><i class="fas fa-calendar"></i> Schedule</h5>
+                                        <p>Tuesday & Wednesday<br>14:00-16:00</p>
+                                    </div>
+                                    
+                                    <div class="progress-bar">
+                                        <span>Intermediate Level</span>
+                                        <div class="progress">
+                                            <div class="progress-fill" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="action-buttons">
+                                        <a href="https://code.org/student/middle-high" target="_blank" class="btn btn-try">Try Code.org</a>
+                                        <a href="contact.html" class="btn btn-join">Join Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Senior Program Card -->
+                    <div class="program-card" data-program="senior">
+                        <div class="program-card-inner">
+                            <!-- Front of Card -->
+                            <div class="program-card-front">
+                                <div class="program-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <h3>Tech Innovators</h3>
+                                <p class="age-range">Ages 14-17</p>
+                                <p class="program-intro">Master advanced programming and build real-world applications!</p>
+                                <div class="skill-preview">
+                                    <span class="skill-tag">Full Stack</span>
+                                    <span class="skill-tag">micro:bit</span>
+                                    <span class="skill-tag">Projects</span>
+                                </div>
+                                <div class="flip-indicator">
+                                    <i class="fas fa-hand-pointer"></i>
+                                    <span>Hover to explore</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Back of Card -->
+                            <div class="program-card-back">
+                                <div class="program-details">
+                                    <h4>What You'll Learn</h4>
+                                    <ul class="curriculum-list">
+                                        <li><i class="fas fa-check"></i> Advanced JavaScript & Python</li>
+                                        <li><i class="fas fa-check"></i> Full-stack web development</li>
+                                        <li><i class="fas fa-check"></i> micro:bit physical computing</li>
+                                        <li><i class="fas fa-check"></i> App development basics</li>
+                                        <li><i class="fas fa-check"></i> Portfolio & career prep</li>
+                                    </ul>
+                                    
+                                    <div class="schedule-info">
+                                        <h5><i class="fas fa-calendar"></i> Schedule</h5>
+                                        <p>Monday<br>14:00-16:00</p>
+                                    </div>
+                                    
+                                    <div class="progress-bar">
+                                        <span>Advanced Level</span>
+                                        <div class="progress">
+                                            <div class="progress-fill" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="action-buttons">
+                                        <a href="https://www.freecodecamp.org/" target="_blank" class="btn btn-try">Try FreeCodeCamp</a>
+                                        <a href="contact.html" class="btn btn-join">Join Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STUDENT SHOWCASE CAROUSEL -->
+        <section class="student-showcase" id="showcase">
+            <div class="container">
+                <div class="showcase-header">
+                    <h2>Amazing Student Projects</h2>
+                    <p>See what our young coders are creating at DD Coder Dojo!</p>
+                </div>
+
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Student Project 1 -->
+                        <div class="project-slide active">
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="/api/placeholder/400/300" alt="Scratch Game Project">
+                                    <div class="project-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="student-info">
+                                        <img src="/api/placeholder/60/60" alt="Student Avatar" class="student-avatar">
+                                        <div class="student-details">
+                                            <h4>Thabo M.</h4>
+                                            <span class="student-age">Age 9 • Junior Ninja</span>
+                                        </div>
+                                    </div>
+                                    <h3>Space Adventure Game</h3>
+                                    <p>"I made a game where you fly a spaceship and collect stars! I learned how to make sprites move and added sound effects."</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Scratch</span>
+                                        <span class="tech-tag">Animation</span>
+                                        <span class="tech-tag">Sound</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Student Project 2 -->
+                        <div class="project-slide">
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="/api/placeholder/400/300" alt="Website Project">
+                                    <div class="project-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="student-info">
+                                        <img src="/api/placeholder/60/60" alt="Student Avatar" class="student-avatar">
+                                        <div class="student-details">
+                                            <h4>Aisha K.</h4>
+                                            <span class="student-age">Age 13 • Code Explorer</span>
+                                        </div>
+                                    </div>
+                                    <h3>My School Website</h3>
+                                    <p>"I built a website about my school with HTML and CSS. It has a photo gallery and information about all our teachers!"</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">HTML</span>
+                                        <span class="tech-tag">CSS</span>
+                                        <span class="tech-tag">Design</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Student Project 3 -->
+                        <div class="project-slide">
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="/api/placeholder/400/300" alt="micro:bit Project">
+                                    <div class="project-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-microchip"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="student-info">
+                                        <img src="/api/placeholder/60/60" alt="Student Avatar" class="student-avatar">
+                                        <div class="student-details">
+                                            <h4>Sipho N.</h4>
+                                            <span class="student-age">Age 15 • Tech Innovator</span>
+                                        </div>
+                                    </div>
+                                    <h3>Smart Home Controller</h3>
+                                    <p>"My micro:bit project controls LED lights in my room. I can change colors and brightness using buttons and the accelerometer!"</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">micro:bit</span>
+                                        <span class="tech-tag">Python</span>
+                                        <span class="tech-tag">IoT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Student Journey Story -->
+                        <div class="project-slide">
+                            <div class="project-card journey-card">
+                                <div class="journey-content">
+                                    <div class="journey-before">
+                                        <h4>Before DD Coder Dojo</h4>
+                                        <img src="/api/placeholder/150/100" alt="Before coding">
+                                        <p>"I didn't know anything about computers"</p>
+                                    </div>
+                                    <div class="journey-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    <div class="journey-after">
+                                        <h4>After 6 Months</h4>
+                                        <img src="/api/placeholder/150/100" alt="After coding">
+                                        <p>"Now I'm building my own games!"</p>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="student-info">
+                                        <img src="/api/placeholder/60/60" alt="Student Avatar" class="student-avatar">
+                                        <div class="student-details">
+                                            <h4>Nomsa P.</h4>
+                                            <span class="student-age">Age 11 • Success Story</span>
+                                        </div>
+                                    </div>
+                                    <h3>My Coding Journey</h3>
+                                    <p>"DD Coder Dojo changed my life! I started knowing nothing about computers, but now I love creating games and want to become a programmer."</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Growth</span>
+                                        <span class="tech-tag">Confidence</span>
+                                        <span class="tech-tag">Dreams</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Python App Project -->
+                        <div class="project-slide">
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="/api/placeholder/400/300" alt="Python App">
+                                    <div class="project-overlay">
+                                        <div class="play-button">
+                                            <i class="fab fa-python"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="student-info">
+                                        <img src="/api/placeholder/60/60" alt="Student Avatar" class="student-avatar">
+                                        <div class="student-details">
+                                            <h4>Lwazi M.</h4>
+                                            <span class="student-age">Age 16 • Tech Innovator</span>
+                                        </div>
+                                    </div>
+                                    <h3>Homework Tracker App</h3>
+                                    <p>"I built a Python app that helps me track my homework and reminds me when assignments are due. It even shows my grades!"</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Python</span>
+                                        <span class="tech-tag">GUI</span>
+                                        <span class="tech-tag">Database</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team Project -->
+                        <div class="project-slide">
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="/api/placeholder/400/300" alt="Team Project">
+                                    <div class="project-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="student-info">
+                                        <img src="/api/placeholder/60/60" alt="Team Avatar" class="student-avatar">
+                                        <div class="student-details">
+                                            <h4>Team Project</h4>
+                                            <span class="student-age">Mixed Ages • Collaboration</span>
+                                        </div>
+                                    </div>
+                                    <h3>Community Help Website</h3>
+                                    <p>"Our team built a website where people in Wentworth can ask for help and offer services. We used HTML, CSS, and JavaScript!"</p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Teamwork</span>
+                                        <span class="tech-tag">Web Dev</span>
+                                        <span class="tech-tag">Community</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Navigation -->
+                    <div class="carousel-nav">
+                        <button class="nav-btn prev-btn" id="prevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="nav-btn next-btn" id="nextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <button class="indicator active" data-slide="0"></button>
+                        <button class="indicator" data-slide="1"></button>
+                        <button class="indicator" data-slide="2"></button>
+                        <button class="indicator" data-slide="3"></button>
+                        <button class="indicator" data-slide="4"></button>
+                        <button class="indicator" data-slide="5"></button>
+                    </div>
+                </div>
+
+                <!-- Showcase Stats -->
+                <div class="showcase-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="150">0</div>
+                        <div class="stat-label">Projects Created</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="47">0</div>
+                        <div class="stat-label">Active Students</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="23">0</div>
+                        <div class="stat-label">Success Stories</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE STATISTICS SECTION -->
+        <section class="statistics-section" id="statistics">
+            <div class="container">
+                <div class="stats-header">
+                    <h2>Our Impact in Numbers</h2>
+                    <p>See the amazing progress we're making together at DD Coder Dojo!</p>
+                </div>
+
+                <div class="stats-grid">
+                    <!-- Students Taught -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-target="247" data-suffix="">0</div>
+                            <div class="stat-label">Students Taught</div>
+                            <div class="stat-sublabel">Since 2022</div>
+                        </div>
+                        <div class="stat-animation">
+                            <div class="pulse-ring"></div>
+                        </div>
+                    </div>
+
+                    <!-- Projects Created -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-target="380" data-suffix="">0</div>
+                            <div class="stat-label">Projects Created</div>
+                            <div class="stat-sublabel">And counting!</div>
+                        </div>
+                        <div class="stat-animation">
+                            <div class="pulse-ring"></div>
+                        </div>
+                    </div>
+
+                    <!-- Coding Hours -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-target="1250" data-suffix="">0</div>
+                            <div class="stat-label">Coding Hours</div>
+                            <div class="stat-sublabel">This year</div>
+                        </div>
+                        <div class="stat-animation">
+                            <div class="pulse-ring"></div>
+                        </div>
+                    </div>
+
+                    <!-- Success Stories -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-target="89" data-suffix="%">0</div>
+                            <div class="stat-label">Success Rate</div>
+                            <div class="stat-sublabel">Students progressing</div>
+                        </div>
+                        <div class="stat-animation">
+                            <div class="pulse-ring"></div>
+                        </div>
+                    </div>
+
+                    <!-- Community Impact -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-target="15" data-suffix="">0</div>
+                            <div class="stat-label">Schools Reached</div>
+                            <div class="stat-sublabel">Through Digital Democracy</div>
+                        </div>
+                        <div class="stat-animation">
+                            <div class="pulse-ring"></div>
+                        </div>
+                    </div>
+
+                    <!-- Mentors -->
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-target="7" data-suffix="">0</div>
+                            <div class="stat-label">Peer Mentors</div>
+                            <div class="stat-sublabel">Leading by example</div>
+                        </div>
+                        <div class="stat-animation">
+                            <div class="pulse-ring"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Impact Metrics -->
+                <div class="impact-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Career Pathways</h4>
+                            <p>12 students now pursuing computer science studies</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Competitions Won</h4>
+                            <p>3 regional coding competitions in 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Community Growth</h4>
+                            <p>Expanding to 5 new locations in 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Status -->
+                <div class="live-status">
+                    <div class="status-indicator">
+                        <div class="live-dot"></div>
+                        <span>Live from DD Coder Dojo</span>
+                    </div>
+                    <p>Currently: <span id="currentActivity">47 students actively coding this week</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>About CoderDojo Wentworth</h2>
+                        <p>Located in Austerville, Durban, CoderDojo Wentworth is part of the global CoderDojo movement, providing free coding education to young people aged 7-17.</p>
+                        <p>Our mission is to empower the next generation with digital skills, creative thinking, and problem-solving abilities that will serve them throughout their lives.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <h3>150+</h3>
+                                <p>Students Enrolled</p>
+                            </div>
+                            <div class="stat">
+                                <h3>3</h3>
+                                <p>Age Groups</p>
+                            </div>
+                            <div class="stat">
+                                <h3>100%</h3>
+                                <p>Free Classes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/coding-kids.jpg" alt="Kids learning to code" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Location</h3>
+                                <p>178 Austerville Drive, Wentworth<br>Durban, South Africa</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>ashley@kcasa.org.za</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Class Times</h3>
+                                <p>Monday to Friday<br>Afternoons 14:00-16:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form action="#" method="POST">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <select name="program" required>
+                                <option value="">Select Program Interest</option>
+                                <option value="junior">Junior (Ages 7-10)</option>
+                                <option value="intermediate">Intermediate (Ages 11-13)</option>
+                                <option value="senior">Senior (Ages 14-17)</option>
+                            </select>
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CoderDojo Wentworth</h3>
+                    <p>Empowering young minds through coding education in Austerville, Durban.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 178 Austerville Drive, Wentworth</p>
+                    <p><i class="fas fa-envelope"></i> ashley@kcasa.org.za</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CoderDojo Wentworth. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="coderdojo-script.js"></script>
+    <script>
+        // DARK MODE FUNCTIONALITY
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const isLightMode = document.body.classList.contains('light-mode');
+            
+            // Toggle icons
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            
+            if (isLightMode) {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+            
+            // Save preference
+            localStorage.setItem('lightMode', isLightMode);
+        }
+
+        // MOBILE MENU TOGGLE
+        function toggleMobileMenu() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Update aria-expanded
+            const isExpanded = menuToggle.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+        }
+
+        // NAVBAR SCROLL EFFECT
+        function handleScroll() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // SECURITY FIX FOR EXTERNAL LINKS
+        function secureExternalLinks() {
+            document.querySelectorAll('a').forEach(link => {
+                if(link.href.includes('http') && !link.href.includes(window.location.hostname)) {
+                    link.rel = 'noopener noreferrer';
+                    link.target = '_blank';
+                }
+            });
+        }
+
+        // INITIALIZE ON DOM LOAD
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme preference
+            const lightMode = localStorage.getItem('lightMode') === 'true';
+            if (lightMode) {
+                document.body.classList.add('light-mode');
+                document.querySelector('.sun-icon').style.display = 'none';
+                document.querySelector('.moon-icon').style.display = 'block';
+            }
+            
+            // Add event listeners
+            document.getElementById('menuToggle').addEventListener('click', toggleMobileMenu);
+            window.addEventListener('scroll', handleScroll);
+            
+            // Secure external links
+            secureExternalLinks();
+        });
+    </script>
+</body>
+</html>
+                

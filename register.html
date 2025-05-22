@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for DD Coder Dojo | Free Coding Classes</title>
+    
+    <!-- SEO IMPROVEMENTS -->
+    <meta name="description" content="Register for free coding classes at DD Coder Dojo. Ages 7-17 welcome. Learn Scratch, Python, web development and more in Wentworth, Durban.">
+    
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- MAIN STYLESHEET -->
+    <link rel="stylesheet" href="coderdojo-styles.css">
+    
+    <style>
+        /* ===== REGISTRATION PAGE SPECIFIC STYLES ===== */
+        .register-header {
+            padding: 8rem 5% 4rem;
+            background: linear-gradient(135deg, var(--dark-color) 0%, #1a0d2e 50%, #16213e 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .register-header h1 {
+            font-family: var(--title-font);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .register-section {
+            padding: 6rem 5%;
+            background: var(--dark-color);
+        }
+        
+        .register-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .registration-info {
+            background: var(--surface-color);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: fit-content;
+        }
+        
+        .registration-info h2 {
+            font-family: var(--title-font);
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+        
+        .info-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+        
+        .info-item h3 {
+            color: var(--light-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-item i {
+            color: var(--accent-color);
+        }
+        
+        .info-item p,
+        .info-item ul {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .info-item ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .registration-form {
+            background: var(--surface-color);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .registration-form h2 {
+            font-family: var(--title-font);
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.5rem;
+            color: var(--text-color);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .step.active {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .step.completed {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .required {
+            color: var(--accent-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: var(--dark-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .checkbox-group label {
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--body-font);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 0, 255, 0.4);
+        }
+        
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+        }
+        
+        .success-message h3 {
+            margin-bottom: 1rem;
+            color: #22c55e;
+        }
+        
+        .program-selector {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .program-option {
+            padding: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .program-option:hover {
+            border-color: var(--secondary-color);
+            background: rgba(0, 217, 255, 0.1);
+        }
+        
+        .program-option.selected {
+            border-color: var(--secondary-color);
+            background: rgba(0, 217, 255, 0.2);
+        }
+        
+        .program-option input {
+            display: none;
+        }
+        
+        .program-option h4 {
+            color: var(--light-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .program-option .age-range {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .program-option p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .register-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .register-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="logo">
+            <div class="logo-icon">
+                <div class="orbit" aria-hidden="true"></div>
+                <div class="core" aria-hidden="true"></div>
+            </div>
+            <span>CoderDojo</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle" 
+                aria-label="Toggle mobile menu" 
+                aria-expanded="false">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Register Header -->
+    <section class="register-header">
+        <h1>Join DD Coder Dojo</h1>
+        <p>Start your coding journey with us! Registration is completely free for ages 7-17.</p>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="register-section">
+        <div class="register-container">
+            <!-- Registration Information -->
+            <div class="registration-info">
+                <h2>Before You Register</h2>
+                
+                <div class="info-item">
+                    <h3><i class="fas fa-gift"></i> Completely Free</h3>
+                    <p>All our coding classes are 100% free. No hidden costs, no materials to buy. We provide everything you need to learn!</p>
+                </div>
+                
+                <div class="info-item">
+                    <h3><i class="fas fa-calendar-alt"></i> Class Schedule</h3>
+                    <ul>
+                        <li><strong>Monday:</strong> Tech Innovators (14:00-16:00)</li>
+                        <li><strong>Tuesday-Wednesday:</strong> Code Explorers (14:00-16:00)</li>
+                        <li><strong>Thursday:</strong> Junior Ninjas (14:00-15:00)</li>
+                        <li><strong>Friday:</strong> Junior Ninjas (13:00-15:00)</li>
+                    </ul>
+                </div>
+                
+                <div class="info-item">
+                    <h3><i class="fas fa-clipboard-list"></i> Next Steps</h3>
+                    <p>After online registration:</p>
+                    <ul>
+                        <li>Visit our office to collect indemnity forms</li>
+                        <li>Complete and submit required paperwork</li>
+                        <li>Attend orientation session</li>
+                        <li>Join our WhatsApp community</li>
+                        <li>Start coding!</li>
+                    </ul>
+                </div>
+                
+                <div class="info-item">
+                    <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+                    <p>178 Austerville Drive<br>Wentworth, Durban<br>KwaZulu-Natal, 4052</p>
+                </div>
+            </div>
+            
+            <!-- Registration Form -->
+            <div class="registration-form">
+                <h2>Student Registration</h2>
+                
+                <!-- Step Indicator -->
+                <div class="step-indicator">
+                    <div class="step active" data-step="1">1</div>
+                    <div class="step" data-step="2">2</div>
+                    <div class="step" data-step="3">3</div>
+                </div>
+                
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    <h3><i class="fas fa-check-circle"></i> Registration Successful!</h3>
+                    <p>Thank you for registering! We'll contact you within 24 hours with next steps.</p>
+                    <p><strong>Reference Number:</strong> <span id="referenceNumber"></span></p>
+                </div>
+                
+                <form id="registrationForm">
+                    <!-- Step 1: Student Information -->
+                    <div class="form-step active" data-step="1">
+                        <h3 style="color: var(--light-color); margin-bottom: 1.5rem;">Student Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="grade">Current Grade</label>
+                                <select id="grade" name="grade">
+                                    <option value="">Select Grade</option>
+                                    <option value="grade1">Grade 1</option>
+                                    <option value="grade2">Grade 2</option>
+                                    <option value="grade3">Grade 3</option>
+                                    <option value="grade4">Grade 4</option>
+                                    <option value="grade5">Grade 5</option>
+                                    <option value="grade6">Grade 6</option>
+                                    <option value="grade7">Grade 7</option>
+                                    <option value="grade8">Grade 8</option>
+                                    <option value="grade9">Grade 9</option>
+                                    <option value="grade10">Grade 10</option>
+                                    <option value="grade11">Grade 11</option>
+                                    <option value="grade12">Grade 12</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="school">School Name</label>
+                            <input type="text" id="school" name="school">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="codingExperience">Previous Coding Experience</label>
+                            <select id="codingExperience" name="codingExperience">
+                                <option value="none">No experience</option>
+                                <option value="beginner">Some basic experience</option>
+                                <option value="intermediate">Some programming knowledge</option>
+                                <option value="advanced">Good programming skills</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Program Selection -->
+                    <div class="form-step" data-step="2">
+                        <h3 style="color: var(--light-color); margin-bottom: 1.5rem;">Choose Your Program</h3>
+                        
+                        <div class="program-selector">
+                            <div class="program-option" data-program="junior">
+                                <input type="radio" name="program" value="junior" id="junior">
+                                <h4>Junior Ninjas</h4>
+                                <div class="age-range">Ages 7-10</div>
+                                <p>Perfect for beginners! Learn Scratch programming, basic computer skills, and create your first games and animations.</p>
+                            </div>
+                            
+                            <div class="program-option" data-program="intermediate">
+                                <input type="radio" name="program" value="intermediate" id="intermediate">
+                                <h4>Code Explorers</h4>
+                                <div class="age-range">Ages 11-13</div>
+                                <p>Ready for real coding? Learn HTML, CSS, JavaScript, and Python while building websites and apps.</p>
+                            </div>
+                            
+                            <div class="program-option" data-program="senior">
+                                <input type="radio" name="program" value="senior" id="senior">
+                                <h4>Tech Innovators</h4>
+                                <div class="age-range">Ages 14-17</div>
+                                <p>Advanced programming! Master full-stack development, work with micro:bits, and build real-world applications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interests">Specific Interests (Optional)</label>
+                            <textarea id="interests" name="interests" rows="3" placeholder="Tell us what you're most excited to learn about (games, websites, robots, apps, etc.)"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Parent/Guardian Information -->
+                    <div class="form-step" data-step="3">
+                        <h3 style="color: var(--light-color); margin-bottom: 1.5rem;">Parent/Guardian Contact</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="parentFirstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="parentFirstName" name="parentFirstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="parentLastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="parentLastName" name="parentLastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="relationship">Relationship to Student <span class="required">*</span></label>
+                            <select id="relationship" name="relationship" required>
+                                <option value="">Select Relationship</option>
+                                <option value="mother">Mother</option>
+                                <option value="father">Father</option>
+                                <option value="guardian">Guardian</option>
+                                <option value="grandparent">Grandparent</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="parentEmail">Email Address <span class="required">*</span></label>
+                                <input type="email" id="parentEmail" name="parentEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="parentPhone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="parentPhone" name="parentPhone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergencyContact">Emergency Contact Name</label>
+                            <input type="text" id="emergencyContact" name="emergencyContact">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergencyPhone">Emergency Contact Phone</label>
+                            <input type="tel" id="emergencyPhone" name="emergencyPhone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Home Address</label>
+                            <textarea id="address" name="address" rows="3" placeholder="Street address, suburb, city, postal code"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additionalInfo">Additional Information</label>
+                            <textarea id="additionalInfo" name="additionalInfo" rows="3" placeholder="Any allergies, medical conditions, special requirements, or other information we should know about"></textarea>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">
+                                I consent to my child participating in DD Coder Dojo activities and understand that physical indemnity forms will need to be completed at registration. <span class="required">*</span>
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="communication" name="communication">
+                            <label for="communication">
+                                I agree to receive updates and announcements via email and WhatsApp about DD Coder Dojo activities.
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="photoConsent" name="photoConsent">
+                            <label for="photoConsent">
+                                I consent to photos/videos of my child being taken during activities for promotional purposes (social media, website, etc.).
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Navigation -->
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+                            <i class="fas fa-paper-plane"></i> Register Student
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DD (Digital Democracy) Coder Dojo</h3>
+                    <p>From blocks to big ideas — come code with us! Supported by KCA in partnership with Raspberry Pi Foundation.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> ashley@kcasa.org.za</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 178 Austerville Drive, Wentworth, Durban</p>
+                    <p><i class="fas fa-phone"></i> 031 461 3101</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DD (Digital Democracy) Coder Dojo. All rights reserved.</p>
+                <p>Supported by KCA (Keep A Child Alive) • In partnership with Raspberry Pi Foundation</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="coderdojo-script.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        // DARK MODE FUNCTIONALITY
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const isLightMode = document.body.classList.contains('light-mode');
+            
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            
+            if (isLightMode) {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+            
+            localStorage.setItem('lightMode', isLightMode);
+        }
+
+        // FORM STEP NAVIGATION
+        function showStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active', 'completed'));
+            
+            // Show current step
+            document.querySelector(`[data-step="${step}"]`).classList.add('active');
+            document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
+            
+            // Mark completed steps
+            for (let i = 1; i < step; i++) {
+                document.querySelector(`.step[data-step="${i}"]`).classList.add('completed');
+            }
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            prevBtn.style.display = step > 1 ? 'block' : 'none';
+            nextBtn.style.display = step < totalSteps ? 'block' : 'none';
+            submitBtn.style.display = step === totalSteps ? 'block' : 'none';
+        }
+
+        function validateStep(step) {
+            const stepElement = document.querySelector(`[data-step="${step}"]`);
+            const requiredFields = stepElement.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#ef4444';
+                } else {
+                    field.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                }
+            });
+            
+            // Special validation for step 2 (program selection)
+            if (step === 2) {
+                const programSelected = document.querySelector('input[name="program"]:checked');
+                if (!programSelected) {
+                    isValid = false;
+                    alert('Please select a program that matches your age.');
+                }
+            }
+            
+            return isValid;
+        }
+
+        function calculateAge(birthDate) {
+            const today = new Date();
+            const birth = new Date(birthDate);
+            let age = today.getFullYear() - birth.getFullYear();
+            const monthDiff = today.getMonth() - birth.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+                age--;
+            }
+            
+            return age;
+        }
+
+        function suggestProgram(age) {
+            const programs = document.querySelectorAll('.program-option');
+            programs.forEach(p => p.classList.remove('suggested'));
+            
+            if (age >= 7 && age <= 10) {
+                document.querySelector('[data-program="junior"]').classList.add('suggested');
+                document.getElementById('junior').checked = true;
+                updateProgramSelection();
+            } else if (age >= 11 && age <= 13) {
+                document.querySelector('[data-program="intermediate"]').classList.add('suggested');
+                document.getElementById('intermediate').checked = true;
+                updateProgramSelection();
+            } else if (age >= 14 && age <= 17) {
+                document.querySelector('[data-program="senior"]').classList.add('suggested');
+                document.getElementById('senior').checked = true;
+                updateProgramSelection();
+            }
+        }
+
+        function updateProgramSelection() {
+            document.querySelectorAll('.program-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            const selected = document.querySelector('input[name="program"]:checked');
+            if (selected) {
+                selected.closest('.program-option').classList.add('selected');
+            }
+        }
+
+        function generateReferenceNumber() {
+            const prefix = 'DDC';
+            const date = new Date();
+            const dateStr = date.getFullYear().toString().substr(-2) + 
+                           (date.getMonth() + 1).toString().padStart(2, '0') + 
+                           date.getDate().toString().padStart(2, '0');
+            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            return prefix + dateStr + random;
+        }
+
+        // EVENT LISTENERS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme preference
+            const lightMode = localStorage.getItem('lightMode') === 'true';
+            if (lightMode) {
+                document.body.classList.add('light-mode');
+            }
+
+            // Age-based program suggestion
+            document.getElementById('dateOfBirth').addEventListener('change', function() {
+                if (this.value) {
+                    const age = calculateAge(this.value);
+                    if (age >= 7 && age <= 17) {
+                        suggestProgram(age);
+                    } else if (age < 7) {
+                        alert('Students must be at least 7 years old to join DD Coder Dojo.');
+                        this.value = '';
+                    } else if (age > 17) {
+                        alert('Our programs are designed for ages 7-17. Please contact us for other opportunities.');
+                        this.value = '';
+                    }
+                }
+            });
+
+            // Program selection handlers
+            document.querySelectorAll('.program-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
+                    updateProgramSelection();
+                });
+            });
+
+            // Navigation buttons
+            document.getElementById('nextBtn').addEventListener('click', function() {
+                if (validateStep(currentStep)) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            });
+
+            document.getElementById('prevBtn').addEventListener('click', function() {
+                currentStep--;
+                showStep(currentStep);
+            });
+
+            // Form submission
+            document.getElementById('registrationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (validateStep(currentStep)) {
+                    // Generate reference number
+                    const refNumber = generateReferenceNumber();
+                    document.getElementById('referenceNumber').textContent = refNumber;
+                    
+                    // Hide form and show success message
+                    this.style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // Scroll to success message
+                    document.getElementById('successMessage').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    
+                    // In a real implementation, you would send this data to your server
+                    console.log('Registration submitted successfully');
+                    
+                    // Store registration data temporarily (in real app, send to server)
+                    const formData = new FormData(this);
+                    const registrationData = Object.fromEntries(formData);
+                    registrationData.referenceNumber = refNumber;
+                    registrationData.submissionDate = new Date().toISOString();
+                    
+                    console.log('Registration Data:', registrationData);
+                }
+            });
+
+            // Initialize first step
+            showStep(1);
+        });
+    </script>
+</body>
+</html>
